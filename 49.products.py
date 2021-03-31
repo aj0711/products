@@ -15,3 +15,6 @@ while True: #1
 print(products)
 
 #products[0][0] #products第0格清單中的第0格 --> 就是第0個商品的名字取出
+
+for p in products:
+	print(p[0],'的價格是', p[1]) #印出products裡面的小清單p
