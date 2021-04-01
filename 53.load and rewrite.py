@@ -1,14 +1,27 @@
-#讀取檔案
+#檢查有無檔案
+import os #operation system
+
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue #繼續,跳到下一迴,商品和價格這一行會跳過
-		name, price = line.strip().split(',')#.split是用來切割字串，括號內是用什麼來切割，原例是遇到','就來切割#.strip把換行符號去除 #從左而右處理，先strip再split
-		#name = s[0] 可以直接透過name and price 來取代第6、7行
-		#price = s[1]
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'): #os的path模組中的isfile功能中,可以檢查檔案存在與否
+	print('Yes')
+	#讀取檔案
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue #繼續,跳到下一迴,商品和價格這一行會跳過
+			name, price = line.strip().split(',')#.split是用來切割字串，括號內是用什麼來切割，原例是遇到','就來切割#.strip把換行符號去除 #從左而右處理，先strip再split
+			#name = s[0] 可以直接透過name and price 來取代第6、7行
+			#price = s[1]
+			products.append([name, price])
+	print(products)
+
+else:
+	print('No file')
+
+
+
+
+
 
 	#while迴圈用在不知道運行幾次的地方
 	#二維度的清單，清單中還有清單
